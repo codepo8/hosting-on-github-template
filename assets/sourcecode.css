@@ -1,4 +1,8 @@
 
+.highlight pre {
+    padding: .5em 1em;
+    overflow: auto;
+}
 /* if dark mode */
 @media (prefers-color-scheme: dark) {
 .highlight pre { background-color: #272822; }
