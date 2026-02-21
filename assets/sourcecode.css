@@ -5,7 +5,7 @@
 }
 /* if dark mode */
 @media (prefers-color-scheme: dark) {
-.highlight pre { background-color: #272822; }
+.highlight pre { background-color: #272822; color: #fff;}
 .highlight .hll { background-color: #272822; }
 .highlight .c { color: #75715e } /* Comment */
 .highlight .err { color: #960050; background-color: #1e0010 } /* Error */
@@ -73,7 +73,8 @@
 }
 /* if light mode or no preference */
 @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
-.highlight .hll { background-color: #ffffcc }
+.highlight pre { background-color: #fff; color: #333;}
+.highlight .hll { background-color: #ffffcc}
 .highlight .c { color: #60a0b0; font-style: italic } /* Comment */
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #007020; font-weight: bold } /* Keyword */
