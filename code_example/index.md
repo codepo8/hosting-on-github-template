@@ -5,9 +5,13 @@ layout: sourcecode
 
 # {{ page.title }}
 
-{% include_relative styles.css %}
-{% include_relative script.js %}
 {% include_relative demo.html %}
+<style>
+{% include_relative styles.css %}
+</style>
+<script>
+{% include_relative script.js %}
+</script>
 
 ## HTML 
 
