@@ -6,12 +6,8 @@ layout: sourcecode
 # {{ page.title }}
 
 {% include_relative demo.html %}
-<style>
-{% include_relative styles.css %}
-</style>
-<script>
-{% include_relative script.js %}
-</script>
+<style>{% include_relative styles.css %}</style>
+<script>{% include_relative script.js %}</script>
 
 ## HTML 
 
