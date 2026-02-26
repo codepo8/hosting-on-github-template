@@ -10,3 +10,7 @@ layout: sourcecode
 ```html
 {% include test.html %}
 ```
+
+```markdown
+{% include_relative codedemo.md %}
+```
