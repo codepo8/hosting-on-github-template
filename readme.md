@@ -1,6 +1,6 @@
 # Hosting HTML/CSS/JS on GitHub
 
-bq. This is a bare-bones example how to host an HTML/CSS/JavaScript example page on GitHub pages. You can fork this repo and get started. 
+> This is a bare-bones example how to host an HTML/CSS/JavaScript example page on GitHub pages. You can fork this repo and get started. 
 
 ## Step 1: Create a new repository (or fork this one)
 
@@ -14,6 +14,7 @@ The first step is to get a GitHub account and create a new repository. This one,
 1. Select `Deploy from a branch` under `Build and deployment`, choose the `main` branch and the `root` folder and press save.
 
     ![The Github pages screen with the sections highlighted you should interact with](images/github-pages.png)
+
     This triggers the build of the page. 
 1. Check the `Actions` tab of the main navigation to see the page being built. 
 
@@ -25,11 +26,11 @@ The first step is to get a GitHub account and create a new repository. This one,
 
     Your page is now available on the web as an HTML/CSS/JS capable environment. For example, this one is at https://codepo8.github.io/hosting-on-github-template/.
 
-    The structure is `https://{{user}}.github.io/{{repository_name}}/` and comes from the repository URL at `https://github.com/{{user}}/{{repository_name}}`. 
+    The structure is `https://{​{user}​}.github.io/{​{repository_name}​}/` and comes from the repository URL at `https://github.com/{​{user}​}/{​{repository_name}​}`. 
 
 ## Step 3: Host your HTML/CSS/JS 
 
-And that's all there is to it. You can now put HTML/CSS/JS documents, images and videos into your repository and they will be shown in the browser under the pages URL. For example, the [simple-html-demo.html](https://github.com/codepo8/hosting-on-github-template/blob/main/simple-html-demo.html) file here is available rendered as HTML at https://codepo8.github.io/hosting-on-github-template/simple-html-demo.html. 
+And that's all there is to it. You can now put HTML/CSS/JS documents, images and videos into your repository and they will be shown in the browser under the pages URL. For example, the [simple-html-demo.html](https://github.com/codepo8/hosting-on-github-template/blob/main/simple-html-demo.html) file here is available rendered as HTML at [https://codepo8.github.io/hosting-on-github-template/simple-html-demo.html](https://codepo8.github.io/hosting-on-github-template/simple-html-demo.html).
 
 ![The rendered HTML](images/html-demo.png)
 
@@ -37,7 +38,7 @@ Every time you change the code and push to the repository the build process runs
 
 ## Advanced: Use templates to publish Markdown content as HTML
 
-Instead of simply hosting HTML, you can also write your content in markdown and have GitHub show it as HTML pages. For example, the [markdown.md](https://github.com/codepo8/hosting-on-github-template/blob/main/markdown.md) file is available as html at https://codepo8.github.io/hosting-on-github-template/markdown or https://codepo8.github.io/hosting-on-github-template/markdown.html. 
+Instead of simply hosting HTML, you can also write your content in markdown and have GitHub show it as HTML pages. For example, the [markdown.md](https://github.com/codepo8/hosting-on-github-template/blob/main/markdown.md) file is available as html at [https://codepo8.github.io/hosting-on-github-template/markdown](https://codepo8.github.io/hosting-on-github-template/markdown) or [https://codepo8.github.io/hosting-on-github-template/markdown.html](https://codepo8.github.io/hosting-on-github-template/markdown.html). 
 
 ![Default HTML rendering of a markdown file on GitHub Pages](images/markdown-demo.png)
 
@@ -90,7 +91,7 @@ permalink: othername.html
 … more …
 ```
 
-This makes [markdown-with-template-filename.md](markdown-with-template-filename.md) is now available at https://codepo8.github.io/hosting-on-github-template/othername.html although there is no file called `othername.html` in the repository. 
+This makes [markdown-with-template-filename.md](markdown-with-template-filename.md) is now available at [https://codepo8.github.io/hosting-on-github-template/othername.html](https://codepo8.github.io/hosting-on-github-template/othername.html) although there is no file called `othername.html` in the repository. 
 
 ## Advanced: Display colour coded source code
 
@@ -122,7 +123,20 @@ while(life + universe + everything) {
 }
 ```
 
-You can check the [codedemo.md](codedemo.md) example to see this in action. The rendered [codedemo.html](https://codepo8.github.io/hosting-on-github-template/codedemo.html) displays the source code.
+You can check the [codedemo.md](https://github.com/codepo8/hosting-on-github-template/blob/main/codedemo.md) example to see this in action. The rendered [codedemo.html](https://codepo8.github.io/hosting-on-github-template/codedemo.html) displays the source code.
+
+*Important*: In order to display the code in different colours, you need to provide the source colours. In this example here they are in the `assets` folder as [sourcecode.css](https://github.com/codepo8/hosting-on-github-template/blob/main/assets/sourcecode.css) which is referenced in the [sourcecode.html](https://github.com/codepo8/hosting-on-github-template/blob/main/_layouts/sourcecode.html) template in the `_layouts` folder:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Source Code Display</title>
+    <link rel="stylesheet" href="/hosting-on-github-template/assets/sourcecode.css">
+</head>
+```
 
 ### Using includes 
 
