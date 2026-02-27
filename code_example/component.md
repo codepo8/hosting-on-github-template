@@ -1,8 +1,6 @@
-  // ...
-
 ---
 title: Multi file code demo
-layout: sourcecode
+layout: component
 ---
 
 # {{ page.title }}
