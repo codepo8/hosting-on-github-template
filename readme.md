@@ -31,7 +31,7 @@ The first step is to get a GitHub account and create a new repository. This one,
 
 And that's all there is to it. You can now put HTML/CSS/JS documents, images and videos into your repository and they will be shown in the browser under the pages URL. For example, the [simple-html-demo.html](https://github.com/codepo8/hosting-on-github-template/blob/main/simple-html-demo.html) file here is available rendered as HTML at https://codepo8.github.io/hosting-on-github-template/simple-html-demo.html. 
 
-
+![The rendered HTML](images/html-demo.png)
 
 Every time you change the code and push to the repository the build process runs in the background and the pages get deployed.
 
@@ -49,7 +49,7 @@ The issue here is that you might not be happy with the out-of-the-box rendering 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% raw %}{{ page.title }}{% endraw %}</title>
+    <title>{​{​ page.title ​}​}</title>
     <style>
         :root {
              color-scheme: light dark;
@@ -64,42 +64,20 @@ The issue here is that you might not be happy with the out-of-the-box rendering 
     </style>
 </head>
 <body>
-    {% raw %}{{ content }}{% endraw %}
+    {​{​ content ​}​}
 </body>
 </html>
 ```
 
-The parts surrounded by curly braces are variables. The `{{ page.title }}` will come from a title defined in the markdown's front matter and the `{{ content }}` part means that this is where the content of the markdown file goes. 
+The parts surrounded by curly braces are variables. The `{​{​ page.title ​}​}` will come from a title defined in the markdown's front matter and the `{​{​ content ​}​}` part means that this is where the content of the markdown file goes. 
 
-In your [markdown file](https://github.com/codepo8/hosting-on-github-template/blob/main/markdown-with-template.md) you create a front matter section with a title and a template. The title could be whatever you want and will be what displays the `{{ page.title }}` in the template. The `layout` needs to be file name of the HTML template in the `_templates` folder without `.html`.
+In your [markdown file](https://github.com/codepo8/hosting-on-github-template/blob/main/markdown-with-template.md) you create a front matter section with a title and a template. The title could be whatever you want and will be what displays the `{​{​ page.title ​}​}` in the template. The `layout` needs to be file name of the HTML template in the `_templates` folder without `.html`.
 
-{% raw %}
----
-title: markdown with template
-layout: simple
----
-# Markdown demo
-
-This markdown file will be shown as HTML
-
-1. Ordered list item 1
-1. Ordered list item 2
-1. Ordered list item 3
-
-- Unordered list item 1
-- Unordered list item 2
-- Unordered list item 3
-
-> blockquote 
-
-## Headings
-
-[links](http://example.com)
-{% endraw %}
+![Markdnown example](images/markdown-example.png)
 
 This now [renders without the header](https://codepo8.github.io/hosting-on-github-template/markdown-with-template) and with any of the CSS, JavaScript or media you added to the template. 
 
-
+![The rendered markdown](images/rendered-markdown.png)
 
 You can also define a different file name in the front matter as `permalink`:
 
@@ -151,62 +129,33 @@ You can check the [codedemo.md](codedemo.md) example to see this in action. The 
 Templates also have another benefit over static HTML pages - you can use includes to seperate repeated elements out into into own files. There are two ways to do that. The first one is global includes for the repository.
 
 1. Create a folder called `_includes` in the root of the repository.
-1. Add the files you want to become includes there. For example, to add a footer, you can create a `footer.html` document. In this example, I even added some more logic from GitHub pages to display the year of the copyright automatically.
+1. Add the files you want to become includes there. For example, to add a footer, you can create a `footer.html` document. 
 
     ```html
     <footer>
         <hr>
-        <p>&copy; {{ site.time | date: "%Y" }}. All rights reserved.</p>
+        <p>&copy; 2026. All rights reserved.</p>
     </footer>
     ```
-1. In your template, you can now include this using `{% raw %}{% include footer.html %}{% endraw %}`. This file needs to be available in the `_includes` folder to work. You can see it in action at the [code demo](https://codepo8.github.io/hosting-on-github-template/codedemo.html). 
+1. In your template, you can now include this using `{​​% include footer.html %​​}`. This file needs to be available in the `_includes` folder to work. You can see it in action at the [code demo](https://codepo8.github.io/hosting-on-github-template/codedemo.html). 
 
-You can also include one file into another one using the `{% raw %}{% include_relative path/file %}{% endraw %}` syntax. And this allows for a great way of showing your code in action and as source code at the same time.
+You can also include one file into another one using the `{​​% include_relative path/file %​​}` syntax. And this allows for a great way of showing your code in action and as source code at the same time.
 
 ## Demo: showcasing an HTML/CSS/JS example with 
 
 Putting these together, you can showcase any HTML/CSS/JS features executed and as source code. Check out the [Code example](https://codepo8.github.io/hosting-on-github-template/code_example/) in this repository. 
 
-![rendered code demo with multiple files](multi-code-demo.png)
+![rendered code demo with multiple files](images/multi-code-demo.png)
 
 You can see the source of this one in [the `code_example` folder](https://github.com/codepo8/hosting-on-github-template/tree/main/code_example). 
 
 You can click the button in the demo to see it in action. Both the functionality and the source display comes from the same files, which means maintenance of the demo is a breeze. 
 
-The way this works is the [index.md] file in the folder. 
+The way this works is the [index.md](https://github.com/codepo8/hosting-on-github-template/tree/main/code_example/index.md) file in the folder. 
 
-{% raw %}
----
-title: Multi file code demo
-layout: sourcecode
----
+![the source of the index file](images/includes-markdown.png)
 
-# {{ page.title }}
-
-## Try it out
-
-{% include_relative demo.html %}
-<style>{% include_relative styles.css %}</style>
-<script>{% include_relative script.js %}</script>
-
-## HTML 
-
-```html
-{% include_relative demo.html %}
-```
-
-## JavaScript
-
-```javascript
-{% include_relative script.js %}
-```
-
-## CSS
-
-```css
-{% include_relative styles.css %}
-```
-{% endraw %}
+This way all you need to do to create changes in the demo is to change the source files. The demo page automatically updates with them.
 
 
 
