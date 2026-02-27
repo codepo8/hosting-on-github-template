@@ -151,10 +151,64 @@ You can check the [codedemo.md](codedemo.md) example to see this in action. The 
 Templates also have another benefit over static HTML pages - you can use includes to seperate repeated elements out into into own files. There are two ways to do that. The first one is global includes for the repository.
 
 1. Create a folder called `_includes` in the root of the repository.
-1. Add the files you want to become includes there. For example, to add a footer, you can create a `footer.html` document.
+1. Add the files you want to become includes there. For example, to add a footer, you can create a `footer.html` document. In this example, I even added some more logic from GitHub pages to display the year of the copyright automatically.
+
+    ```html
+    <footer>
+        <hr>
+        <p>&copy; {{ site.time | date: "%Y" }}. All rights reserved.</p>
+    </footer>
+    ```
+1. In your template, you can now include this using `{% include footer.html %}`. This file needs to be available in the `_includes` folder to work. You can see it in action at the [code demo](https://codepo8.github.io/hosting-on-github-template/codedemo.html). 
+
+You can also include one file into another one using the `{% include_relative path/file %}` syntax. And this allows for a great way of showing your code in action and as source code at the same time.
 
 ## Demo: showcasing an HTML/CSS/JS example with 
 
-Putting thse
+Putting these together, you can showcase any HTML/CSS/JS features executed and as source code. Check out the [Code example](https://codepo8.github.io/hosting-on-github-template/code_example/) in this repository. 
+
+![rendered code demo with multiple files](multi-code-demo.png)
+
+You can see the source of this one in [the `code_example` folder](https://github.com/codepo8/hosting-on-github-template/tree/main/code_example). 
+
+You can click the button in the demo to see it in action. Both the functionality and the source display comes from the same files, which means maintenance of the demo is a breeze. 
+
+The way this works is the [index.md] file in the folder. 
+
+```markdown
+{% raw %}
+---
+title: Multi file code demo
+layout: sourcecode
+---
+
+# {{ page.title }}
+
+## Try it out
+
+{% include_relative demo.html %}
+<style>{% include_relative styles.css %}</style>
+<script>{% include_relative script.js %}</script>
+
+## HTML 
+
+```html
+{% include_relative demo.html %}
+```
+
+## JavaScript
+
+```javascript
+{% include_relative script.js %}
+```
+
+## CSS
+
+```css
+{% include_relative styles.css %}
+```
+{% endraw %}
+```
+
 
 
