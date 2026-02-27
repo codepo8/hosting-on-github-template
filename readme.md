@@ -159,9 +159,9 @@ Templates also have another benefit over static HTML pages - you can use include
         <p>&copy; {{ site.time | date: "%Y" }}. All rights reserved.</p>
     </footer>
     ```
-1. In your template, you can now include this using `{% include footer.html %}`. This file needs to be available in the `_includes` folder to work. You can see it in action at the [code demo](https://codepo8.github.io/hosting-on-github-template/codedemo.html). 
+1. In your template, you can now include this using `{% raw %}{% include footer.html %}{% endraw %}`. This file needs to be available in the `_includes` folder to work. You can see it in action at the [code demo](https://codepo8.github.io/hosting-on-github-template/codedemo.html). 
 
-You can also include one file into another one using the `{% include_relative path/file %}` syntax. And this allows for a great way of showing your code in action and as source code at the same time.
+You can also include one file into another one using the `{% raw %}{% include_relative path/file %}{% endraw %}` syntax. And this allows for a great way of showing your code in action and as source code at the same time.
 
 ## Demo: showcasing an HTML/CSS/JS example with 
 
