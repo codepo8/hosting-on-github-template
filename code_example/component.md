@@ -1,3 +1,5 @@
+  // ...
+
 ---
 title: Multi file code demo
 layout: sourcecode
@@ -13,18 +15,18 @@ layout: sourcecode
 
 ## HTML 
 
-```html
+<syntax-highlight language="html">
 {% include_relative demo.html %}
-```
+</syntax-highlight>
 
 ## JavaScript
 
-```javascript
+<syntax-highlight language="js">
 {% include_relative script.js %}
-```
+</syntax-highlight>
 
 ## CSS
 
-```css
+<syntax-highlight language="css">
 {% include_relative styles.css %}
-```
+</syntax-highlight>
