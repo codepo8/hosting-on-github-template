@@ -39,7 +39,7 @@ Instead of simply hosting HTML, you can also write your content in markdown and 
 
 
 
-The issue there is that you might not be happy with the out-of-the-box rendering of GitHub and especially the listing of the repository name as the main heading. To change it, you can create your own HTML templates. For this to work, you need to create a folder called `_layouts` in your repository and create an HTML document in there. A bare bones example is part of this repository
+The issue there is that you might not be happy with the out-of-the-box rendering of GitHub and especially the listing of the repository name as the main heading. To change it, you can create your own HTML templates. For this to work, you need to create a folder called `_layouts` in your repository and create an HTML document in there. A [bare bones example](https://github.com/codepo8/hosting-on-github-template/blob/main/_layouts/simple.html) called `simple.html` is part of this repository.
 
 ```html
 <!DOCTYPE html>
@@ -53,6 +53,33 @@ The issue there is that you might not be happy with the out-of-the-box rendering
     {{ content }}
 </body>
 </html>
+```
+
+The parts surrounded by curly braces are variables. The `{{ page.title }}` will come from a title defined in the markdown's front matter and the `{{ content }}` part means that this is where the content of the markdown file goes. 
+
+In your markdown file you create a front matter section with a title and a template. The title could be whatever you want and will be what displays the `{{ page.title }}` in the template. The template needs to be file name of the HTML template in the `_templates` folder without `.html`.
+```markdown
+---
+title: markdown with template
+template: simple
+---
+# Markdown demo
+
+This markdown file will be shown as HTML
+
+1. Ordered list item 1
+1. Ordered list item 2
+1. Ordered list item 3
+
+- Unordered list item 1
+- Unordered list item 2
+- Unordered list item 3
+
+> blockquote 
+
+## Headings
+
+[links](http://example.com)
 ```
 
 ## Advanced: Display colour coded source code
