@@ -1,5 +1,5 @@
 ---
-title: markdown with template
+title: Markdown with template
 layout: simple
 ---
 # Markdown demo

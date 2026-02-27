@@ -31,6 +31,8 @@ The first step is to get a GitHub account and create a new repository. This one,
 
 And that's all there is to it. You can now put HTML/CSS/JS documents, images and videos into your repository and they will be shown in the browser under the pages URL. For example, the [simple-html-demo.html](https://github.com/codepo8/hosting-on-github-template/blob/main/simple-html-demo.html) file here is available rendered as HTML at https://codepo8.github.io/hosting-on-github-template/simple-html-demo.html. 
 
+
+
 Every time you change the code and push to the repository the build process runs in the background and the pages get deployed.
 
 ## Advanced: Use templates to publish Markdown content as HTML
@@ -48,6 +50,18 @@ The issue here is that you might not be happy with the out-of-the-box rendering 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
+    <style>
+        :root {
+             color-scheme: light dark;
+        }
+        body {
+            font-family: sans-serif;
+            margin: 2em;
+            line-height: 1.6;
+            background: light-dark(#eee, #333);
+            color: light-dark(#333, #eee);
+        }
+    </style>
 </head>
 <body>
     {{ content }}
@@ -114,13 +128,14 @@ Commonly GitHub pages are used to show demos of the code in the repository and w
 
 You then can use code fences (three backticks) to show source code. For example, the following:
 
-```markdown
+```
 ​​`​​`​`javascript
 while(life + universe + everything) {
     return 42;
 }
 ​`​​`​`
 ```
+
 Will result in: 
 
 ```javascript
@@ -130,6 +145,13 @@ while(life + universe + everything) {
 ```
 
 You can check the [codedemo.md](codedemo.md) example to see this in action. The rendered [codedemo.html](https://codepo8.github.io/hosting-on-github-template/codedemo.html) displays the source code.
+
+### Using includes 
+
+Templates also have another benefit over static HTML pages - you can use includes to seperate repeated elements out into into own files. There are two ways to do that. The first one is global includes for the repository.
+
+1. Create a folder called `_includes` in the root of the repository.
+1. Add the files you want to become includes there. For example, to add a footer, you can create a `footer.html` document.
 
 ## Demo: showcasing an HTML/CSS/JS example with 
 

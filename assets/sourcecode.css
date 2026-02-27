@@ -3,6 +3,17 @@
     padding: .5em 1em;
     overflow: auto;
 }
+:root {
+      color-scheme: light dark;
+}
+body {
+    font-family: sans-serif;
+    margin: 2em;
+    line-height: 1.6;
+    background: light-dark(#eee, #333);
+    color: light-dark(#333, #eee);
+}
+
 /* if dark mode */
 @media (prefers-color-scheme: dark) {
 .highlight pre { background-color: #272822; color: #fff;}
