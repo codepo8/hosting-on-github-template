@@ -39,7 +39,7 @@ Every time you change the code and push to the repository the build process runs
 
 Instead of simply hosting HTML, you can also write your content in markdown and have GitHub show it as HTML pages. For example, the [markdown.md](https://github.com/codepo8/hosting-on-github-template/blob/main/markdown.md) file is available as html at https://codepo8.github.io/hosting-on-github-template/markdown or https://codepo8.github.io/hosting-on-github-template/markdown.html. 
 
-![Default HTML rendering of a markdown file on GitHub Pages](markdown-demo.png)
+![Default HTML rendering of a markdown file on GitHub Pages](images/markdown-demo.png)
 
 The issue here is that you might not be happy with the out-of-the-box rendering of GitHub and especially the listing of the repository name as the main heading. To change it, you can create your own HTML templates. For this to work, you need to create a folder called `_layouts` in your repository and create an HTML document in there. A [bare bones example](https://github.com/codepo8/hosting-on-github-template/blob/main/_layouts/simple.html) called `simple.html` is part of this repository.
 
@@ -49,7 +49,7 @@ The issue here is that you might not be happy with the out-of-the-box rendering 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }}</title>
+    <title>{% raw %}{{ page.title }}{% endraw %}</title>
     <style>
         :root {
              color-scheme: light dark;
@@ -64,7 +64,7 @@ The issue here is that you might not be happy with the out-of-the-box rendering 
     </style>
 </head>
 <body>
-    {{ content }}
+    {% raw %}{{ content }}{% endraw %}
 </body>
 </html>
 ```
@@ -73,7 +73,7 @@ The parts surrounded by curly braces are variables. The `{{ page.title }}` will 
 
 In your [markdown file](https://github.com/codepo8/hosting-on-github-template/blob/main/markdown-with-template.md) you create a front matter section with a title and a template. The title could be whatever you want and will be what displays the `{{ page.title }}` in the template. The `layout` needs to be file name of the HTML template in the `_templates` folder without `.html`.
 
-```markdown
+{% raw %}
 ---
 title: markdown with template
 layout: simple
@@ -95,7 +95,7 @@ This markdown file will be shown as HTML
 ## Headings
 
 [links](http://example.com)
-```
+{% endraw %}
 
 This now [renders without the header](https://codepo8.github.io/hosting-on-github-template/markdown-with-template) and with any of the CSS, JavaScript or media you added to the template. 
 
@@ -175,7 +175,6 @@ You can click the button in the demo to see it in action. Both the functionality
 
 The way this works is the [index.md] file in the folder. 
 
-```markdown
 {% raw %}
 ---
 title: Multi file code demo
@@ -208,7 +207,6 @@ layout: sourcecode
 {% include_relative styles.css %}
 ```
 {% endraw %}
-```
 
 
 
