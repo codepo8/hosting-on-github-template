@@ -1,6 +1,6 @@
 ---
 title: markdown with template
-template: simple
+layout: simple
 ---
 # Markdown demo
 

@@ -57,7 +57,8 @@ The issue there is that you might not be happy with the out-of-the-box rendering
 
 The parts surrounded by curly braces are variables. The `{{ page.title }}` will come from a title defined in the markdown's front matter and the `{{ content }}` part means that this is where the content of the markdown file goes. 
 
-In your markdown file you create a front matter section with a title and a template. The title could be whatever you want and will be what displays the `{{ page.title }}` in the template. The template needs to be file name of the HTML template in the `_templates` folder without `.html`.
+In your [markdown file](https://github.com/codepo8/hosting-on-github-template/blob/main/markdown-with-template.md) you create a front matter section with a title and a template. The title could be whatever you want and will be what displays the `{{ page.title }}` in the template. The template needs to be file name of the HTML template in the `_templates` folder without `.html`.
+
 ```markdown
 ---
 title: markdown with template
@@ -81,6 +82,9 @@ This markdown file will be shown as HTML
 
 [links](http://example.com)
 ```
+
+This now [renders without the header](https://codepo8.github.io/hosting-on-github-template/markdown-with-template) and with any of the CSS, JavaScript or media you added to the template. 
+
 
 ## Advanced: Display colour coded source code
 
