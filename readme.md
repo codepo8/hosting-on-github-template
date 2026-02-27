@@ -35,7 +35,25 @@ Every time you change the code and push to the repository the build process runs
 
 ## Advanced: Use templates and includes to publish Markdown content as HTML
 
-Instead of simply hosting HTML, you can also write your content in markdown and have GitHub show it as HTML pages. For example, the [markdown.md](https://github.com/codepo8/hosting-on-github-template/blob/main/markdown.md)
+Instead of simply hosting HTML, you can also write your content in markdown and have GitHub show it as HTML pages. For example, the [markdown.md](https://github.com/codepo8/hosting-on-github-template/blob/main/markdown.md) file is available as html at https://codepo8.github.io/hosting-on-github-template/markdown or https://codepo8.github.io/hosting-on-github-template/markdown.html. 
+
+
+
+The issue there is that you might not be happy with the out-of-the-box rendering of GitHub and especially the listing of the repository name as the main heading. To change it, you can create your own HTML templates. For this to work, you need to create a folder called `_layouts` in your repository and create an HTML document in there. A bare bones example is part of this repository
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+</head>
+<body>
+    {{ content }}
+</body>
+</html>
+```
 
 ## Advanced: Display colour coded source code
 
