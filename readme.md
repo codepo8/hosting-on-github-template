@@ -33,13 +33,13 @@ And that's all there is to it. You can now put HTML/CSS/JS documents, images and
 
 Every time you change the code and push to the repository the build process runs in the background and the pages get deployed.
 
-## Advanced: Use templates and includes to publish Markdown content as HTML
+## Advanced: Use templates to publish Markdown content as HTML
 
 Instead of simply hosting HTML, you can also write your content in markdown and have GitHub show it as HTML pages. For example, the [markdown.md](https://github.com/codepo8/hosting-on-github-template/blob/main/markdown.md) file is available as html at https://codepo8.github.io/hosting-on-github-template/markdown or https://codepo8.github.io/hosting-on-github-template/markdown.html. 
 
+![Default HTML rendering of a markdown file on GitHub Pages](markdown-demo.png)
 
-
-The issue there is that you might not be happy with the out-of-the-box rendering of GitHub and especially the listing of the repository name as the main heading. To change it, you can create your own HTML templates. For this to work, you need to create a folder called `_layouts` in your repository and create an HTML document in there. A [bare bones example](https://github.com/codepo8/hosting-on-github-template/blob/main/_layouts/simple.html) called `simple.html` is part of this repository.
+The issue here is that you might not be happy with the out-of-the-box rendering of GitHub and especially the listing of the repository name as the main heading. To change it, you can create your own HTML templates. For this to work, you need to create a folder called `_layouts` in your repository and create an HTML document in there. A [bare bones example](https://github.com/codepo8/hosting-on-github-template/blob/main/_layouts/simple.html) called `simple.html` is part of this repository.
 
 ```html
 <!DOCTYPE html>
@@ -57,12 +57,12 @@ The issue there is that you might not be happy with the out-of-the-box rendering
 
 The parts surrounded by curly braces are variables. The `{{ page.title }}` will come from a title defined in the markdown's front matter and the `{{ content }}` part means that this is where the content of the markdown file goes. 
 
-In your [markdown file](https://github.com/codepo8/hosting-on-github-template/blob/main/markdown-with-template.md) you create a front matter section with a title and a template. The title could be whatever you want and will be what displays the `{{ page.title }}` in the template. The template needs to be file name of the HTML template in the `_templates` folder without `.html`.
+In your [markdown file](https://github.com/codepo8/hosting-on-github-template/blob/main/markdown-with-template.md) you create a front matter section with a title and a template. The title could be whatever you want and will be what displays the `{{ page.title }}` in the template. The `layout` needs to be file name of the HTML template in the `_templates` folder without `.html`.
 
 ```markdown
 ---
 title: markdown with template
-template: simple
+layout: simple
 ---
 # Markdown demo
 
@@ -86,10 +86,53 @@ This markdown file will be shown as HTML
 This now [renders without the header](https://codepo8.github.io/hosting-on-github-template/markdown-with-template) and with any of the CSS, JavaScript or media you added to the template. 
 
 
+
+You can also define a different file name in the front matter as `permalink`:
+
+```markdown
+---
+title: markdown with template
+layout: simple
+permalink: othername.html
+---
+… more …
+```
+
+This makes [markdown-with-template-filename.md](markdown-with-template-filename.md) is now available at https://codepo8.github.io/hosting-on-github-template/othername.html although there is no file called `othername.html` in the repository. 
+
 ## Advanced: Display colour coded source code
+
+Commonly GitHub pages are used to show demos of the code in the repository and whilst it is easy to link to the source display in the repository, you might want to include colour coded source examples in your pages. To accomplish this, you need to do the following:
+
+1. Create a file in the root of your repository called `_config.yml`. 
+1. Add the following code: 
+    ```yml
+    markdown: kramdown
+    highlighter: rouge
+    ```
+    This tells GitHub pages tp use the [rouge highlighter](https://kramdown.gettalong.org/syntax_highlighter/rouge.html) to show source code.
+
+You then can use code fences (three backticks) to show source code. For example, the following:
+
+```markdown
+​​`​​`​`javascript
+while(life + universe + everything) {
+    return 42;
+}
+​`​​`​`
+```
+Will result in: 
+
+```javascript
+while(life + universe + everything) {
+    return 42;
+}
+```
+
+You can check the [codedemo.md](codedemo.md) example to see this in action. The rendered [codedemo.html](https://codepo8.github.io/hosting-on-github-template/codedemo.html) displays the source code.
 
 ## Demo: showcasing an HTML/CSS/JS example with 
 
-## Tip: Use collections 
+Putting thse
 
 
