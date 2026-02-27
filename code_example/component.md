@@ -13,9 +13,7 @@ layout: component
 
 ## HTML 
 
-<syntax-highlight language="html">
-{% include_relative demo.html %}
-</syntax-highlight>
+<syntax-highlight language="html">{% include_relative demo.html %}</syntax-highlight>
 
 ## JavaScript
 
